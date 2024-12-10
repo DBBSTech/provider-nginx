@@ -8,7 +8,7 @@ import (
 	"flag"
 	"log"
 
-	"github.com/DBBSTech/provider-nginx/internal/provider"
+	"github.com/DBBSTech/provider-nginx/internal/nginx"
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 )
 
@@ -31,11 +31,11 @@ func main() {
 		// TODO: Update this string with the published name of your provider.
 		// Also update the tfplugindocs generate command to either remove the
 		// -provider-name flag or set its value to the updated provider name.
-		Address: "registry.terraform.io/hashicorp/scaffolding",
+		Address: "registry.terraform.io/DBBSTECH/nginx",
 		Debug:   debug,
 	}
 
-	err := providerserver.Serve(context.Background(), provider.New(version), opts)
+	err := providerserver.Serve(context.Background(), nginx.Provider, opts)
 
 	if err != nil {
 		log.Fatal(err.Error())
